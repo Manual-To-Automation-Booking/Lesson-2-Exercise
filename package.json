@@ -1,0 +1,26 @@
+{
+  "name": "nightwatch-browserstack",
+  "version": "1.0.0",
+  "readme": "Nightwatch Integration with [BrowserStack](https://www.browserstack.com)",
+  "description": "Selenium examples for Nightwatch and BrowserStack Automate",
+  "scripts": {
+    "single": "nightwatch --test ./tests/contactus.spec.js --env browserstack",
+    "local": "nightwatch --test ./tests/contactus.spec.js  --env browserstack ",
+    "parallel": "nightwatch --test ./tests/contactus.spec.js  --env browserstack.chrome,browserstack.edge,browserstack.firefox",
+    "parallel_local": "nightwatch --test ./tests/contactus.spec.js --env browserstack.firefox,browserstack.chrome",
+    "sample-test": "nightwatch --test ./tests/contactus.spec.js  --env env1,env2,env3",
+    "on-prem": "nightwatch --test ./tests/contactus.spec.js  --env chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/browserstack/nightwatch-browserstack"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nightwatch/browserstack": "^3.2.2",
+    "@types/mocha": "^10.0.6",
+    "@types/nightwatch": "^2.3.30",
+    "@types/node": "^20.11.16",
+    "nightwatch": "^3.4.1"
+  }
+}
