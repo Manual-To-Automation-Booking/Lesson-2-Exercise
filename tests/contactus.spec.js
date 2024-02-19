@@ -3,6 +3,7 @@ const { ok } = require("assert");
 describe('Automation Exercise contact us form', function () {
     beforeEach(function (done) {
         browser.navigateTo('https://automationexercise.com');
+        browser.maximizeWindow();
     });
 
     it('submit form successfully', function (browser) {
@@ -44,23 +45,18 @@ describe('Automation Exercise contact us form', function () {
                 retryInterval: 200
             })
             .sendKeys('#message', [message])
-            .useXpath()
             .waitForElementVisible({
-                selector: '//*[@id="contact-us-form"]/div[6]/input',
+                selector: 'input[data-qa="submit-button"]',
                 timeout: 10000,
                 retryInterval: 200
             })
             .execute('window.scrollTo(0,document.body.scrollHeight);')
             .click({
 
-                selector: '//*[@id="contact-us-form"]/div[6]/input'
+                selector: 'input[data-qa="submit-button"]'
 
-            });
-
-            try {
-                browser.alerts.accept();
-            } catch (error) {
-                console.log('There was an error: ', error);
-            }
+            })
+            .alerts.accept()
+            .assert.visible('div[class="status alert alert-success"]');
     });
 });
